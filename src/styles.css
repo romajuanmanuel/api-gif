@@ -47,6 +47,9 @@ header, footer {
 #main img{
   border: 5px solid rgb(239, 20, 20);
   object-fit: contain;
+  max-width: 100%;
+  height: auto;
+  display: block; 
 }
 
 #app {
