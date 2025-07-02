@@ -300,8 +300,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "build": "webpack --mode production",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/romajuanmanuel/api-gif.git"
