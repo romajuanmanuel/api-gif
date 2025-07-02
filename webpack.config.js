@@ -1,38 +1,45 @@
+// webpack.config.js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
-  mode: "development",
-  entry: "./src/index.js",
-  output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: './',
-    clean: true,
-  },
-  devtool: "eval-source-map",
-  devServer: {
-    watchFiles: ["./index.html"],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-    }),
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
+
+  return {
+    mode: isProduction ? 'production' : 'development',
+    entry: "./src/index.js",
+    output: {
+      filename: "main.js",
+      path: path.resolve(__dirname, "dist"),
+      publicPath: isProduction ? './' : '/',
+      clean: true,
+    },
+    devtool: isProduction ? 'source-map' : 'eval-source-map',
+    devServer: {
+      static: {
+        directory: path.resolve(__dirname, "dist"),
       },
-      {
-        test: /\.html$/i,
-        loader: "html-loader",
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
-        type: "asset/resource",
-      },
+      port: 8080,
+      open: true,
+      compress: true,
+      hot: true
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+      }),
     ],
-  },
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+          type: "asset/resource",
+        },
+      ],
+    },
+  };
 };
