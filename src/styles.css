@@ -43,6 +43,10 @@ header, footer {
   height: 3em;
 }
 
+#main img{
+  border: 5px solid black;
+}
+
 #app {
   display: flex;
   flex-direction: column;
