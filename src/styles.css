@@ -1,5 +1,17 @@
-/* Reset */
-* {
+/* Variables y Reset */
+:root {
+  --primary-color: #333;
+  --text-color: #333;
+  --bg-color: #f4f4f4;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --radius: 8px;
+  --spacing: 1rem;
+  --max-width: 1200px;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -7,79 +19,95 @@
 
 html, body {
   height: 100%;
-  max-width: 100%;
+  font-family: system-ui, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
+/* Layout base */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: system-ui, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
 }
 
-/* Header y Footer fijos arriba y abajo */
-header, footer {
-  background-color: #333;
+/* Encabezado y pie de página */
+header,
+footer {
+  background-color: var(--primary-color);
   color: white;
-  padding: 1rem;
+  padding: var(--spacing);
   text-align: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+  box-shadow: var(--shadow);
 }
 
-/* Main ocupa todo el espacio vertical restante */
-#main {
-  flex: 1;
-  width: 100%;
-  max-width: 100vw;
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap:5px;
-}
-
-#main button,input{
-  max-width: 50%;
-  align-self: center;
-  height: 3em;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
-  border:none;
-}
-
-#main img{
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
-  max-width: 100%;
-  height: auto;
-  display: block; 
-}
-
+/* Contenedor principal */
 #app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-#wheaterContainer{
+
+#main {
+  flex: 1;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
-  object-fit: contain;
-  align-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Elementos del main */
+#main button,
+#main input {
+  max-width: 100%;
+  width: min(400px, 90%);
+  margin: 0 auto;
+  height: 3em;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.5em 1em;
+}
+
+/* Imágenes */
+#main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+
+/* Contenedor del clima */
+#wheaterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  text-align: center;
 }
-#wheaterContainer h2{
-  align-self: center;
+
+#wheaterContainer h2 {
+  font-size: clamp(1.25rem, 2vw, 2rem);
 }
-/* Responsive: centrado de contenido en pantallas grandes */
+
+/* Responsive: diseño en pantallas más grandes */
 @media (min-width: 768px) {
-  main {
-    max-width: 100%;
-    margin: 0 auto;
+  #main {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  #wheaterContainer {
+    flex: 1 1 300px;
+    align-items: flex-start;
+    text-align: left;
   }
 }
-
-
-  

@@ -12,7 +12,6 @@ export function api(query) {
             const imgUrl = data.data.images.original.url;
 
             container.innerHTML = `
-                <h2>GIF</h2>
                 <img src="${imgUrl}" alt="GIF de Giphy" />
             `;
         })
