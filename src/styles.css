@@ -26,6 +26,7 @@ header, footer {
   padding: 1rem;
   text-align: center;
   flex-shrink: 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
 }
 
 /* Main ocupa todo el espacio vertical restante */
@@ -37,16 +38,19 @@ header, footer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  gap:5px;
 }
 
 #main button,input{
   max-width: 50%;
   align-self: center;
   height: 3em;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+  border:none;
 }
 
 #main img{
-  border: 5px solid rgb(239, 20, 20);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
   max-width: 100%;
   height: auto;
   display: block; 
