@@ -1,4 +1,3 @@
-/* Variables y Reset */
 :root {
   --primary-color: #333;
   --text-color: #333;
@@ -31,7 +30,7 @@ body {
   min-height: 100vh;
 }
 
-/* Encabezado y pie de página */
+
 header,
 footer {
   background-color: var(--primary-color);
@@ -42,7 +41,7 @@ footer {
   box-shadow: var(--shadow);
 }
 
-/* Contenedor principal */
+
 #app {
   display: flex;
   flex-direction: column;
@@ -60,7 +59,7 @@ footer {
   margin: 0 auto;
 }
 
-/* Elementos del main */
+
 #main button,
 #main input {
   max-width: 100%;
@@ -73,7 +72,7 @@ footer {
   padding: 0.5em 1em;
 }
 
-/* Imágenes */
+
 #main img {
   max-width: 100%;
   height: auto;
@@ -82,8 +81,7 @@ footer {
   border-radius: var(--radius);
 }
 
-/* Contenedor del clima */
-#wheaterContainer {
+#gifContainer {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -92,22 +90,20 @@ footer {
   text-align: center;
 }
 
-#wheaterContainer h2 {
+#gifContainer h2 {
   font-size: clamp(1.25rem, 2vw, 2rem);
 }
 
-/* Responsive: diseño en pantallas más grandes */
 @media (min-width: 768px) {
   #main {
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
   }
 
-  #wheaterContainer {
+  #gifContainer {
     flex: 1 1 300px;
-    align-items: flex-start;
     text-align: left;
   }
 }
